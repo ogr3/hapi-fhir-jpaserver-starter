@@ -28,6 +28,14 @@
             </snapshots>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>bootstrap</id>
+            <url>http://vioxx/nexus2/content/repositories/bootstrap/</url>
+        </repository>
+        <repository>
+            <id>nll-compile</id>
+            <url>http://vioxx/nexus2/content/repositories/nll-compile/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -45,6 +53,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>6.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle.driver</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>12.2.0.1</version>
         </dependency>
 
         <!-- This dependency includes the core HAPI-FHIR classes -->
