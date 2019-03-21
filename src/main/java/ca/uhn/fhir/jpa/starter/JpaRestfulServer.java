@@ -154,12 +154,10 @@ public class JpaRestfulServer extends RestfulServer {
          * so it is a potential security vulnerability. Consider using an AuthorizationInterceptor
          * with this feature.
          */
-        if (false) { // <-- DISABLED RIGHT NOW
-            if (fhirVersion == FhirVersionEnum.DSTU3) {
-                registerProvider(appCtx.getBean(TerminologyUploaderProviderDstu3.class));
-            } else if (fhirVersion == FhirVersionEnum.R4) {
-                registerProvider(appCtx.getBean(TerminologyUploaderProviderR4.class));
-            }
+        if (fhirVersion == FhirVersionEnum.DSTU3) {
+            registerProvider(appCtx.getBean(TerminologyUploaderProviderDstu3.class));
+        } else if (fhirVersion == FhirVersionEnum.R4) {
+            registerProvider(appCtx.getBean(TerminologyUploaderProviderR4.class));
         }
 
         // If you want to enable the $trigger-subscription operation to allow
