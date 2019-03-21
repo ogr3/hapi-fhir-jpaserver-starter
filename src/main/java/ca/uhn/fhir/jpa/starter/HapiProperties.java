@@ -14,6 +14,7 @@ public class HapiProperties {
     static final String ALLOW_EXTERNAL_REFERENCES = "allow_external_references";
     static final String ALLOW_MULTIPLE_DELETE = "allow_multiple_delete";
     static final String ALLOW_PLACEHOLDER_REFERENCES = "allow_placeholder_references";
+    static final String REUSE_CACHED_SEARCH_RESULTS_MILLIS = "reuse_cached_search_results_millis";
     static final String DATASOURCE_DRIVER = "datasource.driver";
     static final String DATASOURCE_MAX_POOL_SIZE = "datasource.max_pool_size";
     static final String DATASOURCE_PASSWORD = "datasource.password";
@@ -40,6 +41,9 @@ public class HapiProperties {
     static final String SUBSCRIPTION_RESTHOOK_ENABLED = "subscription.resthook.enabled";
     static final String SUBSCRIPTION_WEBSOCKET_ENABLED = "subscription.websocket.enabled";
     static final String TEST_PORT = "test.port";
+    static final String TESTER_CONFIG_REFUSE_TO_FETCH_THIRD_PARTY_URLS = "tester.config.refuse_to_fetch_third_party_urls";
+    static final String CORS_ENABLED = "cors.enabled";
+    static final String CORS_ALLOWED_ORIGIN = "cors.allowed_origin";
     static final String ALLOW_CONTAINS_SEARCHES = "allow_contains_searches";
     static final String ALLOW_OVERRIDE_DEFAULT_SEARCH_PARAMS = "allow_override_default_search_params";
     static final String EMAIL_FROM = "email.from";
@@ -253,6 +257,18 @@ public class HapiProperties {
         return HapiProperties.getIntegerProperty(TEST_PORT, 0);
     }
 
+    public static Boolean getTesterConfigRefustToFetchThirdPartyUrls() {
+        return HapiProperties.getBooleanProperty(TESTER_CONFIG_REFUSE_TO_FETCH_THIRD_PARTY_URLS, false);
+    }
+
+    public static Boolean getCorsEnabled() {
+        return HapiProperties.getBooleanProperty(CORS_ENABLED, true);
+    }
+
+    public static String getCorsAllowedOrigin() {
+        return HapiProperties.getProperty(CORS_ALLOWED_ORIGIN, "*");
+    }
+
     public static String getServerBase() {
         return HapiProperties.getProperty(SERVER_BASE, "/fhir");
     }
@@ -311,5 +327,10 @@ public class HapiProperties {
 
     public static String getEmailPassword() {
         return HapiProperties.getProperty("email.password");
+    }
+
+    public static Long getReuseCachedSearchResultsMillis() {
+        String value = HapiProperties.getProperty(REUSE_CACHED_SEARCH_RESULTS_MILLIS, "-1");
+        return Long.valueOf(value);
     }
 }
